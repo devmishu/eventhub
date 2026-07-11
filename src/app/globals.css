@@ -1,26 +1,59 @@
 @import "tailwindcss";
+@import "@heroui/styles";
 
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  /* UI ডিজাইন অনুযায়ী নিখুঁত ভায়োলেট এবং গ্রে কালার টোন */
+  --primary: oklch(0.55 0.24 275.5);
+  /* #5820e4 বা #6366f1 এর মিক্সড ভাইব্রেন্ট পার্পল */
+  --accent: oklch(0.96 0.01 270);
+  /* ক্যাটাগরি ও ছোট ট্যাগের হালকা ব্যাকগ্রাউন্ড */
+  --success: oklch(0.65 0.15 155);
+  --separator: oklch(0.95 0.01 240);
+  /* খুবই হালকা বর্ডার */
 }
 
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
-}
+@layer components {
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+  .app-container {
+    @apply container mx-auto px-6 my-6;
   }
-}
 
-body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  .button-primary {
+    @apply bg-[#5820e4] hover:bg-[#4717c1] text-white px-5 py-2 rounded-xl font-medium transition-all duration-300 cursor-pointer shadow-xs text-sm;
+  }
+
+  .button-outline {
+    @apply border border-zinc-200 text-zinc-700 hover:bg-zinc-50 px-5 py-2 rounded-xl font-medium transition-all duration-300 cursor-pointer text-sm;
+  }
+
+  .card-primary {
+    @apply bg-white border border-zinc-100 rounded-2xl transition-all duration-300;
+    box-shadow: 0 4px 20px -4px rgba(0, 0, 0, 0.05);
+  }
+
+  .main-bg {
+    @apply bg-[#fbfbfe];
+    /* আপনার পাঠানো UI ইমেজের মতো হালকা অফ-হোয়াইট ব্যাকগ্রাউন্ড */
+  }
+
+  .section-bg {
+    @apply bg-zinc-50;
+  }
+
+  .text-primary {
+    @apply text-zinc-900;
+  }
+
+  .text-secondary {
+    @apply text-zinc-500;
+  }
+
+  .navbar-bg {
+    @apply bg-[#fbfbfe]/80 backdrop-blur-lg border-b border-zinc-100;
+  }
+
+  .input-primary {
+    @apply bg-white border border-zinc-200 text-zinc-900 rounded-xl px-4 py-2.5 outline-none focus:border-[#5820e4] focus:ring-1 focus:ring-[#5820e4] transition-all text-sm;
+  }
+
 }
