@@ -1,6 +1,6 @@
 "use client";
 
-import { Button, Link } from "@heroui/react";
+import { Button } from "@heroui/react";
 import Image from "next/image";
 
 export default function HeroSection() {
@@ -18,7 +18,7 @@ export default function HeroSection() {
           </span>
 
           {/* Main Heading */}
-          <h1 className="max-w-[400px] lg:max-w-[540px] text-4xl sm:text-5xl lg:text-6xl font-extrabold text-zinc-900 leading-[1.1] tracking-tight mb-6">
+          <h1 className="max-w-100 lg:max-w-135 text-4xl sm:text-5xl lg:text-6xl font-extrabold text-zinc-900 leading-[1.1] tracking-tight mb-6">
   Discover Amazing <span className="text-[#5820e4]">Events</span> Near You
 </h1>
 
@@ -30,16 +30,16 @@ export default function HeroSection() {
           {/* CTA Buttons */}
           <div className="flex flex-wrap gap-4 items-center w-full sm:w-auto">
             <Button
-              as={Link}
-              href="/explore"
+              
+              
               className="button-primary h-12 px-6 rounded-xl font-semibold shadow-md transition-transform active:scale-95"
             >
               Explore Events
             </Button>
             
             <Button
-              as={Link}
-              href="/events/add"
+              
+              
               className="button-outline bg-white h-12 px-6 rounded-xl font-semibold shadow-xs transition-transform active:scale-95"
             >
               Create Event
@@ -52,7 +52,7 @@ export default function HeroSection() {
         <div className="md:col-span-5 relative flex flex-col items-center">
           
           {/* Main Hero Image Card */}
-          <div className="relative w-full aspect-[4/3] rounded-3xl overflow-hidden shadow-lg border border-zinc-100 z-10">
+          <div className="relative w-full aspect-4/3 rounded-3xl overflow-hidden shadow-lg border border-zinc-100 z-10">
             <Image
               src="/images/hero-banner.jpg" 
               alt="Amazing Events Showcase"

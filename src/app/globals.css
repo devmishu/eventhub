@@ -10,6 +10,28 @@
   --success: oklch(0.65 0.15 155);
   --separator: oklch(0.95 0.01 240);
   /* খুবই হালকা বর্ডার */
+
+  /* ক্যাটাগরিগুলোর কাস্টম টেক্সট ও ব্যাকগ্রাউন্ড কালার */
+  --cat-music-bg: #e0e7ff;
+  --cat-music-text: #4f46e5;
+
+  --cat-tech-bg: #f3e8ff;
+  --cat-tech-text: #9333ea;
+
+  --cat-workshop-bg: #fef3c7;
+  --cat-workshop-text: #d97706;
+
+  --cat-sports-bg: #d1fae5;
+  --cat-sports-text: #059669;
+
+  --cat-art-bg: #ffedd5;
+  --cat-art-text: #ea580c;
+
+  --cat-food-bg: #ede9fe;
+  --cat-food-text: #7c3aed;
+
+  --cat-all-bg: #f4f4f5;
+  --cat-all-text: #52525b;
 }
 
 @layer components {

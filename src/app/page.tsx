@@ -1,4 +1,6 @@
+import FeaturedEvents from "@/components/FeaturedEvents";
 import HeroSection from "@/components/HeroSection";
+import PopularCategories from "@/components/PopularCategories";
 
 export default function Home() {
   return (
@@ -6,13 +8,8 @@ export default function Home() {
       {/* আপনার হোম পেজের সেকশনগুলো (যেমন: Hero, Featured Events) এখানে একটার পর একটা বসবে */}
       <div className=" app-container flex flex-col flex-1 items-center justify-center">
         <HeroSection/>
-        {/* জাস্ট টেস্ট করার জন্য একটি সাময়িক টেক্সট রাখা হলো */}
-        <h1 className="text-3xl font-bold tracking-tight text-center">
-          Welcome to EventHub
-        </h1>
-        <p className="text-secondary mt-2 text-center">
-          Discover, Create & Manage Events seamlessly.
-        </p>
+        <PopularCategories/>
+        <FeaturedEvents/>
 
       </div>
     </div>
