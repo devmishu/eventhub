@@ -24,4 +24,7 @@ export const getFeaturedEvents = async ():Promise<EventData[]> => {
 export const getMyEvents = async (userId:string | null | undefined):Promise<EventData[]> => {
     return protectedFetch<EventData[]>(`/api/events/user/${userId}`);
 } 
+export const getSingleEvents = async (eventId:string):Promise<EventData[]> => {
+    return serverFetch<EventData[]>(`/api/events/${eventId}`);
+} 
 

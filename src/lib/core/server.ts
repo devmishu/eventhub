@@ -1,6 +1,30 @@
+import { getUserToken } from "./session";
+
 const baseurl = process.env.NEXT_PUBLIC_BASE_URL
 
 
+// const authHeader = async () => {
+//     const token = await getUserToken();
+//     const header = token ? {
+//         authorization: `Bearer ${token}`
+//     } : {};
+//     return header;
+// }
+
+// // headers এর জন্য নির্দিষ্ট টাইপ ডিক্লেয়ারেশন
+// const authHeader = async (): Promise<Record<string, string>> => {
+//   const token = await getUserToken();
+//   const header = token ? {
+//         authorization: `Bearer ${token}`
+//     } : {};
+//   return header;
+// };
+
+// headers এর জন্য নির্দিষ্ট টাইপ ডিক্লেয়ারেশন
+const authHeader = async (): Promise<Record<string, string>> => {
+  const token = await getUserToken();
+  return token ? { authorization: `Bearer ${token}` } : {};
+};
 
 
 
@@ -27,7 +51,9 @@ export const serverFetch = async <T>(path: string): Promise<T> => {
 
 export const protectedFetch = async <T>(path: string): Promise<T> => {
   try {
-    const res = await fetch(`${baseurl}${path}`);
+    const res = await fetch(`${baseurl}${path}`,{
+      headers: await authHeader(),
+    });
 
     const data = await res.json();
 
@@ -56,6 +82,7 @@ export const serverMutation = async <T>(
     method,
     headers: {
       "Content-Type": "application/json",
+      ...await authHeader(),
     },
     body: JSON.stringify(apiData),
   });
@@ -67,6 +94,7 @@ export const serverMutation = async <T>(
 export const serverDelete = async (path:string) => {
     const res = await fetch(`${baseurl}${path}`, {
         method: 'DELETE',
+        ...await authHeader(),
     });
 
     return res.json();

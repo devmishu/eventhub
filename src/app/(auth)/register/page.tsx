@@ -5,6 +5,8 @@ import { Form, TextField, Label, Input, FieldError, Button, Link } from "@heroui
 import { authClient } from "@/lib/auth-client";
 import toast from "react-hot-toast";
 import { redirect } from "next/navigation";
+import { FcGoogle } from "react-icons/fc";
+import { FaGithub } from "react-icons/fa6";
 
 export default function RegisterPage(): React.JSX.Element {
   
@@ -57,7 +59,7 @@ export default function RegisterPage(): React.JSX.Element {
           type="button" 
           className="w-full h-11 border border-zinc-200 hover:bg-zinc-50 rounded-xl flex items-center justify-center gap-2.5 text-sm font-semibold text-zinc-700 transition-colors cursor-pointer"
         >
-          
+           <FcGoogle className="w-4 h-4 text-zinc-900 fill-current"/>
           <span>Continue with Google</span>
         </button>
 
@@ -65,7 +67,7 @@ export default function RegisterPage(): React.JSX.Element {
           type="button" 
           className="w-full h-11 border border-zinc-200 hover:bg-zinc-50 rounded-xl flex items-center justify-center gap-2.5 text-sm font-semibold text-zinc-700 transition-colors cursor-pointer"
         >
-          {/* <Github className="w-4 h-4 text-zinc-900 fill-current" /> */}
+          <FaGithub className="w-4 h-4 text-zinc-900 fill-current"/>
           <span>Continue with GitHub</span>
         </button>
       </div>

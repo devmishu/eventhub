@@ -35,7 +35,7 @@ export default async function ManageEventPage() {
         {/* Page Header */}
         <div className="text-left mb-8">
           <h1 className="text-3xl font-black text-zinc-900 tracking-tight">
-            Manage Items
+            Manage Events
           </h1>
           <p className="text-sm font-medium text-zinc-400 mt-1.5">
             View and manage your listed products and options.

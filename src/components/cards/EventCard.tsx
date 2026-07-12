@@ -1,6 +1,9 @@
+"use client";
+
 import React from "react";
 import { Button, Card } from "@heroui/react";
 import { MapPin } from "lucide-react";
+import Link from "next/link";
 
 interface EventCardProps {
   imageUrl: string;
@@ -8,6 +11,9 @@ interface EventCardProps {
   date: string;
   location: string;
   category: string;
+  id: string;
+  shortDescription: string;
+  price: number;
 }
 
 export function EventCard({
@@ -16,6 +22,9 @@ export function EventCard({
   date,
   category,
   location,
+  id,
+  shortDescription,
+  price,
 }: EventCardProps): React.JSX.Element {
   const eventDate = new Date(date);
 
@@ -29,20 +38,12 @@ export function EventCard({
     <Card className="w-full bg-white border border-zinc-100/80 rounded-[24px] p-3 shadow-[0_4px_20px_-4px_rgba(0,0,0,0.02)] hover:shadow-[0_12px_24px_-8px_rgba(0,0,0,0.06)] transition-all duration-300 group flex flex-col !overflow-visible">
       {/* Image and Floating Date Container */}
       <div className="relative w-full aspect-[4/3] flex-shrink-0 !overflow-visible">
-        {/* Actual Image Box */}
-        {/* <div className="w-full h-full rounded-[18px] overflow-hidden bg-zinc-100">
-          <img
-            src={imageUrl}
-            alt={title}
-            className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
-          />
-        </div> */}
         <div className="relative w-full h-52 flex-shrink-0 overflow-visible">
           <div className="w-full h-full rounded-[18px] overflow-hidden bg-zinc-100">
             <img
               src={imageUrl}
               alt={title}
-              className="w-full h-full object-cover"
+              className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
             />
           </div>
         </div>
@@ -65,19 +66,32 @@ export function EventCard({
       {/* Card Content Section */}
       <div className="flex flex-col items-start px-2 pt-6 pb-1 text-left w-full mt-1 flex-1">
         {/* Event Title */}
-        <h3 className="text-base font-bold text-zinc-900 tracking-tight leading-snug line-clamp-1 mb-2 group-hover:text-zinc-950 transition-colors">
+        <h3 className="text-base font-bold text-zinc-900 tracking-tight leading-snug line-clamp-1 mb-1 group-hover:text-zinc-950 transition-colors">
           {title}
         </h3>
 
-        {/* Location Row */}
-        <div className="flex items-center gap-1 text-zinc-400 text-xs font-medium w-full line-clamp-1 mb-4">
-          <MapPin className="w-3.5 h-3.5 flex-shrink-0 stroke-[2]" />
-          <span>{location}</span>
+        {/* 1. shortDescription Title এর ঠিক নিচে */}
+        <p className="text-zinc-500 text-xs font-medium leading-relaxed line-clamp-2 mb-3 min-h-[32px]">
+          {shortDescription}
+        </p>
+
+        {/* 2. Location এবং Price একসাথে এক সারিতে */}
+        <div className="flex items-center justify-between w-full gap-2 mb-4">
+          {/* Location Info */}
+          <div className="flex items-center gap-1 text-zinc-400 text-xs font-medium line-clamp-1 max-w-[70%]">
+            <MapPin className="w-3.5 h-3.5 flex-shrink-0 stroke-[2]" />
+            <span>{location}</span>
+          </div>
+
+          {/* Price Tag Location এর পাশে */}
+          <span className="text-sm font-black text-zinc-800 flex-shrink-0">
+            {price === 0 ? "Free" : `$${price}`}
+          </span>
         </div>
 
-        {/* Category Pill and Action Button Fixed Layout Row */}
+        {/* Bottom Action Row */}
         <div className="mt-auto flex justify-between items-center w-full gap-2">
-          {/* Dynamic Category Pill Badge */}
+          {/* Category Pill */}
           <div
             className="inline-block text-xs font-bold px-2.5 py-1 rounded-md"
             style={{
@@ -88,16 +102,18 @@ export function EventCard({
             {category}
           </div>
 
-          {/* Upgraded Button with Theme Color Variable */}
-          <Button
-            variant="solid"
-            className="h-9 px-4 rounded-xl text-xs font-bold text-white shadow-sm transition-all duration-200 opacity-90 hover:opacity-100 cursor-pointer"
-            style={{
-              backgroundColor: "var(--primary)",
-            }}
-          >
-            View Details
-          </Button>
+          {/* View Details Button */}
+          <Link href={`/explore/${id}`}>
+            <Button
+              variant="solid"
+              className="h-9 px-4 rounded-xl text-xs font-bold text-white shadow-sm transition-all duration-200 opacity-90 hover:opacity-100 cursor-pointer"
+              style={{
+                backgroundColor: "var(--primary)",
+              }}
+            >
+              View Details
+            </Button>
+          </Link>
         </div>
       </div>
     </Card>

@@ -49,6 +49,9 @@ export default async function ExplorePage(): Promise<React.JSX.Element> {
               date={event.date}
               location={event.location}
               category={event.category}
+              id={event._id}
+              shortDescription={event.shortDescription}
+              price={event.price}
             />
           ))}
         </div>
