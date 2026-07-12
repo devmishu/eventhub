@@ -12,6 +12,9 @@ export interface Event {
   fullDescription: string;
   priority: string;
   price: number;
+  category: string;
+  location: string;
+  userId: string;
 }
 
 export default async function ExplorePage(): Promise<React.JSX.Element> {
@@ -44,7 +47,8 @@ export default async function ExplorePage(): Promise<React.JSX.Element> {
               imageUrl={event.imageUrl}
               title={event.title}
               date={event.date}
-              location={"sylhet"}
+              location={event.location}
+              category={event.category}
             />
           ))}
         </div>

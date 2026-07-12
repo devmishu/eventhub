@@ -5,13 +5,17 @@ import { MapPin } from "lucide-react";
 interface EventCardProps {
   imageUrl: string;
   title: string;
-  date:string;
+  date: string;
+  location: string;
+  category: string;
 }
 
 export function EventCard({
   imageUrl,
   title,
   date,
+  category,
+  location,
 }: EventCardProps): React.JSX.Element {
   const eventDate = new Date(date);
 
@@ -68,7 +72,7 @@ export function EventCard({
         {/* Location Row */}
         <div className="flex items-center gap-1 text-zinc-400 text-xs font-medium w-full line-clamp-1 mb-4">
           <MapPin className="w-3.5 h-3.5 flex-shrink-0 stroke-[2]" />
-          {/* <span>{location}</span> */}
+          <span>{location}</span>
         </div>
 
         {/* Category Pill and Action Button Fixed Layout Row */}
@@ -81,7 +85,7 @@ export function EventCard({
               color: "var(--primary)",
             }}
           >
-            {/* {category} */}
+            {category}
           </div>
 
           {/* Upgraded Button with Theme Color Variable */}

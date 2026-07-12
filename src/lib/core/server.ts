@@ -25,6 +25,27 @@ export const serverFetch = async <T>(path: string): Promise<T> => {
   }
 };
 
+export const protectedFetch = async <T>(path: string): Promise<T> => {
+  try {
+    const res = await fetch(`${baseurl}${path}`);
+
+    const data = await res.json();
+
+    if (!res.ok) {
+      throw new Error(data?.message || "Something went wrong");
+    }
+
+    return data.data as T;
+  } catch (error) {
+    if (error instanceof Error) {
+      console.error("Server Fetch Error:", error.message);
+      throw error;
+    }
+
+    throw new Error("Unknown error occurred");
+  }
+};
+
 
 export const serverMutation = async <T>(
   path: string,
@@ -41,3 +62,12 @@ export const serverMutation = async <T>(
 
   return res.json();
 };
+
+
+export const serverDelete = async (path:string) => {
+    const res = await fetch(`${baseurl}${path}`, {
+        method: 'DELETE',
+    });
+
+    return res.json();
+}

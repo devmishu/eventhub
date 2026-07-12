@@ -14,6 +14,9 @@ export interface Event {
   fullDescription: string;
   priority: string;
   price: number;
+  category: string;
+  location: string;
+  userId: string;
 }
 
 interface StatItem {
@@ -86,6 +89,8 @@ export default async function FeaturedEvents(): React.JSX.Element {
               imageUrl={event.imageUrl}
               title={event.title}
               date={event.date}
+              location={event.location}
+              category={event.category}
             />
           ))}
         </div>
