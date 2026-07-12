@@ -11,6 +11,8 @@ import {
     TextField,
 } from "@heroui/react";
 import { CalendarDays, ArrowRight } from "lucide-react";
+import toast from "react-hot-toast";
+import { createEvent } from "@/lib/actions/events";
 
 export default function CreateEventForm() {
     
@@ -21,12 +23,29 @@ export default function CreateEventForm() {
     const formData = new FormData(e.currentTarget);
     
     // আপনার ফর্মের ডেটা স্ট্রাকচার অনুযায়ী টাইপ কাস্টিং ফিক্স করা হলো
-    const data = Object.fromEntries(formData.entries()) as Record<
+    const eventData = Object.fromEntries(formData.entries()) as Record<
       "title" | "shortDescription" | "fullDescription" | "price" | "date" | "priority" | "imageUrl", 
       string
     >;
 
-    console.log("form data:",data);
+            const newEvent = {
+            ...eventData,
+            price: Number(eventData.price),
+            };
+
+        try {
+
+            const data = await createEvent(newEvent);
+            toast.success(`${data.message}`);
+            // router.push(`/dashboard/${user?.role}/myprompt`);
+        } catch (error:any) {
+            console.error("create prompt failed:", error);
+            toast.error("create prompt failed:", error);
+        }
+
+
+    console.log("form data:",eventData);
+    console.log("new form data:",newEvent);
   };
 
     return (

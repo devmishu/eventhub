@@ -1,8 +1,12 @@
 import FeaturedEvents from "@/components/FeaturedEvents";
 import HeroSection from "@/components/HeroSection";
 import PopularCategories from "@/components/PopularCategories";
+import { getEvents } from "@/lib/apis/events";
 
-export default function Home() {
+export default async function Home() {
+  const data = await getEvents();
+  console.log(data);
+  
   return (
     <div className="main-bg text-primary min-h-screen flex flex-col">
       {/* আপনার হোম পেজের সেকশনগুলো (যেমন: Hero, Featured Events) এখানে একটার পর একটা বসবে */}
