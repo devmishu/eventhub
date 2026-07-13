@@ -2,6 +2,7 @@ import React from "react";
 import FilterBar from "@/components/FilterBar";
 import { EventCard } from "@/components/cards/EventCard";
 import { getEvents } from "@/lib/apis/events";
+import { PaginationWithSummary } from "@/components/shared/PaginationWithSummary";
 
 export interface Event {
   _id?: string;
@@ -17,8 +18,32 @@ export interface Event {
   userId: string;
 }
 
-export default async function ExplorePage(): Promise<React.JSX.Element> {
-  const eventsData: Event[] = await getEvents();
+interface PageProps {
+  searchParams: Promise<Record<string, string | string[] | undefined>>;
+}
+
+interface EvenntResponse {
+  result: Event[];
+}
+
+export default async function ExplorePage({
+  searchParams,
+}: PageProps): Promise<React.JSX.Element> {
+  const filters = await searchParams;
+
+  const quaryString = new URLSearchParams(
+    filters as Record<string, string>,
+  ).toString();
+
+  const eventsData: EvenntResponse = await getEvents(quaryString);
+  const allEventsData: Event[] = eventsData.result;
+
+  // const allEventsData: Event[] = await getEvents(quaryString);
+
+  // const promptsData: EvenntResponse = await getAllPrompts(queryString);
+  // const allPromptsData: Event[] = promptsData.result;
+
+  // const allallEventsData = [];
 
   return (
     <section className="w-full bg-[#fbfbfe] py-12">
@@ -36,12 +61,12 @@ export default async function ExplorePage(): Promise<React.JSX.Element> {
 
         {/* Filter */}
         <div className="-mx-6 md:-mx-12">
-          <FilterBar />
+          <FilterBar filters={filters} />
         </div>
 
         {/* Events */}
         <div className="mb-16 grid grid-cols-1 gap-6 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4">
-          {eventsData.map((event) => (
+          {allEventsData.map((event) => (
             <EventCard
               key={event._id}
               imageUrl={event.imageUrl}
@@ -55,6 +80,10 @@ export default async function ExplorePage(): Promise<React.JSX.Element> {
             />
           ))}
         </div>
+
+        <PaginationWithSummary
+          total={eventsData?.total}
+        />
       </div>
     </section>
   );

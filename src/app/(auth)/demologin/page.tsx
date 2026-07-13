@@ -8,12 +8,12 @@ import {
   Input,
   FieldError,
   Button,
+  Link,
 } from "@heroui/react";
 import { authClient } from "@/lib/auth-client";
 import toast from "react-hot-toast";
 import { FcGoogle } from "react-icons/fc";
 import { FaGithub } from "react-icons/fa6";
-import Link from "next/link";
 
 export default function LoginPage(): React.JSX.Element {
   // ডেমো কোডের মতো ফর্ম সাবমিট হ্যান্ডলার
@@ -48,7 +48,7 @@ export default function LoginPage(): React.JSX.Element {
 
   return (
     <div className="h-screen flex flex-col justify-center items-center">
-      <div className=" w-full max-w-[440px] bg-white border border-zinc-100 rounded-[24px] p-8 md:p-10 shadow-[0_8px_30px_rgb(0,0,0,0.02)] mx-auto">
+      <div className=" w-full max-w-110 bg-white border border-zinc-100 rounded-[24px] p-8 md:p-10 shadow-[0_8px_30px_rgb(0,0,0,0.02)] mx-auto">
         {/* Header Titles */}
         <div className="text-center mb-6">
           <h2 className="text-2xl font-bold text-zinc-900 tracking-tight">
@@ -107,6 +107,7 @@ export default function LoginPage(): React.JSX.Element {
               Email
             </Label>
             <Input
+              defaultValue={"demo@gmail.com"}
               placeholder="Enter your email"
               className="w-full h-11 bg-white border border-zinc-200 rounded-xl px-3.5 text-sm font-medium text-zinc-800 placeholder:text-zinc-400 focus-within:outline-2 focus-within:outline-zinc-300 focus-within:border-transparent transition-all"
             />
@@ -130,6 +131,7 @@ export default function LoginPage(): React.JSX.Element {
               Password
             </Label>
             <Input
+                defaultValue={'Demouser123'}
               placeholder="Enter your  password"
               className="w-full h-11 bg-white border border-zinc-200 rounded-xl px-3.5 text-sm font-medium text-zinc-800 placeholder:text-zinc-400 focus-within:outline-2 focus-within:outline-zinc-300 focus-within:border-transparent transition-all"
             />
@@ -144,15 +146,6 @@ export default function LoginPage(): React.JSX.Element {
           >
             Login
           </Button>
-          {/* Premium Minimal Demo Login Button */}
-          <Link href="/demologin" className={"w-full inline-block"}>
-            <button
-              type="button"
-              className="w-full h-11 rounded-xl bg-zinc-50 hover:bg-zinc-100 border border-zinc-200 text-zinc-700 font-bold text-sm shadow-xs transition-transform active:scale-98 cursor-pointer"
-            >
-              Try Demo Login
-            </button>
-          </Link>
         </Form>
 
         {/* Bottom Redirect Link */}

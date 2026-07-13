@@ -94,7 +94,7 @@ export const serverMutation = async <T>(
 export const serverDelete = async (path:string) => {
     const res = await fetch(`${baseurl}${path}`, {
         method: 'DELETE',
-        ...await authHeader(),
+        // ...await authHeader(),
     });
 
     return res.json();

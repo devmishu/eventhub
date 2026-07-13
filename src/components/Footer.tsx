@@ -1,7 +1,7 @@
 "use client";
 import Link from "next/link";
 import { Button } from "@heroui/react";
-import { FaGithub, FaLinkedinIn, FaGlobe, FaTerminal } from "react-icons/fa6";
+import { FaGithub, FaLinkedinIn, FaGlobe } from "react-icons/fa6";
 import { BsEnvelopeFill, BsTelephoneFill, BsGeoAltFill } from "react-icons/bs";
 import { Calendar } from "lucide-react";
 
@@ -52,26 +52,62 @@ export function Footer(): React.JSX.Element {
               </li>
               <li>
                 <Link
-                  href="/all-products"
+                  href="/explore"
                   className="text-zinc-500 text-sm font-medium transition-colors duration-200"
                   onMouseEnter={(e) =>
                     (e.currentTarget.style.color = "var(--primary)")
                   }
                   onMouseLeave={(e) => (e.currentTarget.style.color = "")}
                 >
-                  Browse Tools
+                  Explore Events
                 </Link>
               </li>
               <li>
                 <Link
-                  href="/items/manage"
+                  href="/add-event"
                   className="text-zinc-500 text-sm font-medium transition-colors duration-200"
                   onMouseEnter={(e) =>
                     (e.currentTarget.style.color = "var(--primary)")
                   }
                   onMouseLeave={(e) => (e.currentTarget.style.color = "")}
                 >
-                  Manage Items
+                  Create Event
+                </Link>
+              </li>
+              <li>
+                <Link
+                  href="/manage-events"
+                  className="text-zinc-500 text-sm font-medium transition-colors duration-200"
+                  onMouseEnter={(e) =>
+                    (e.currentTarget.style.color = "var(--primary)")
+                  }
+                  onMouseLeave={(e) => (e.currentTarget.style.color = "")}
+                >
+                  Manage Events
+                </Link>
+              </li>
+              <li>
+                <Link
+                  href="/about"
+                  className="text-zinc-500 text-sm font-medium transition-colors duration-200"
+                  onMouseEnter={(e) =>
+                    (e.currentTarget.style.color = "var(--primary)")
+                  }
+                  onMouseLeave={(e) => (e.currentTarget.style.color = "")}
+                >
+                  About
+                </Link>
+              </li>
+              <li>
+                <Link
+                  href="/contact"
+                  className="text-zinc-500 text-sm font-medium transition-colors duration-200"
+                  onMouseEnter={(e) =>
+                    (e.currentTarget.style.color = "var(--primary)")
+                  }
+                  onMouseLeave={(e) => (e.currentTarget.style.color = "")}
+                >
+                  Contact
                 </Link>
               </li>
             </ul>
@@ -85,29 +121,11 @@ export function Footer(): React.JSX.Element {
             <ul className="flex flex-col gap-3 w-full">
               <li className="flex items-center gap-2.5 text-zinc-500 text-sm font-medium">
                 <BsEnvelopeFill className="w-3.5 h-3.5 text-zinc-400 flex-shrink-0" />
-                <a
-                  href="mailto:mishu@example.com"
-                  className="transition-colors"
-                  onMouseEnter={(e) =>
-                    (e.currentTarget.style.color = "var(--primary)")
-                  }
-                  onMouseLeave={(e) => (e.currentTarget.style.color = "")}
-                >
-                  mishu@example.com
-                </a>
+                <span>mishu@example.com</span>
               </li>
               <li className="flex items-center gap-2.5 text-zinc-500 text-sm font-medium">
                 <BsTelephoneFill className="w-3.5 h-3.5 text-zinc-400 flex-shrink-0" />
-                <a
-                  href="tel:+880123456789"
-                  className="transition-colors"
-                  onMouseEnter={(e) =>
-                    (e.currentTarget.style.color = "var(--primary)")
-                  }
-                  onMouseLeave={(e) => (e.currentTarget.style.color = "")}
-                >
-                  +880 1234-56789
-                </a>
+                <span>+880 1234-56789</span>
               </li>
               <li className="flex items-center gap-2.5 text-zinc-500 text-sm font-medium">
                 <BsGeoAltFill className="w-3.5 h-3.5 text-zinc-400 flex-shrink-0" />
@@ -121,125 +139,32 @@ export function Footer(): React.JSX.Element {
             <h4 className="text-xs font-bold text-zinc-900 uppercase tracking-widest">
               Connect With Me
             </h4>
-            <div className="flex items-center gap-2">
-              <Button
-                isIconOnly
-                size="sm"
-                variant="bordered"
-                as="a"
-                href="https://github.com/devmishu"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="border-zinc-200 hover:bg-zinc-50 rounded-xl cursor-pointer transition-all"
-                onMouseEnter={(e) => {
-                  e.currentTarget.style.borderColor = "var(--primary)";
-                  const icon = e.currentTarget.querySelector("svg");
-                  if (icon) icon.style.color = "var(--primary)";
-                }}
-                onMouseLeave={(e) => {
-                  e.currentTarget.style.borderColor = "";
-                  const icon = e.currentTarget.querySelector("svg");
-                  if (icon) icon.style.color = "";
-                }}
-              >
-                <FaGithub className="w-4 h-4 text-zinc-600 transition-colors" />
-              </Button>
-              <Button
-                isIconOnly
-                size="sm"
-                variant="bordered"
-                as="a"
-                href="https://linkedin.com"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="border-zinc-200 hover:bg-zinc-50 rounded-xl cursor-pointer transition-all"
-                onMouseEnter={(e) => {
-                  e.currentTarget.style.borderColor = "var(--primary)";
-                  const icon = e.currentTarget.querySelector("svg");
-                  if (icon) icon.style.color = "var(--primary)";
-                }}
-                onMouseLeave={(e) => {
-                  e.currentTarget.style.borderColor = "";
-                  const icon = e.currentTarget.querySelector("svg");
-                  if (icon) icon.style.color = "";
-                }}
-              >
-                <FaLinkedinIn className="w-4 h-4 text-zinc-600 transition-colors" />
-              </Button>
-              <Button
-                isIconOnly
-                size="sm"
-                variant="bordered"
-                as="a"
-                href="https://mishudebnath.dev"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="border-zinc-200 hover:bg-zinc-50 rounded-xl cursor-pointer transition-all"
-                onMouseEnter={(e) => {
-                  e.currentTarget.style.borderColor = "var(--primary)";
-                  const icon = e.currentTarget.querySelector("svg");
-                  if (icon) icon.style.color = "var(--primary)";
-                }}
-                onMouseLeave={(e) => {
-                  e.currentTarget.style.borderColor = "";
-                  const icon = e.currentTarget.querySelector("svg");
-                  if (icon) icon.style.color = "";
-                }}
-              >
-                <FaGlobe className="w-4 h-4 text-zinc-600 transition-colors" />
-              </Button>
-            </div>
-
-            {/* Live Operational Status Indicator */}
-            <div
-              className="flex items-center gap-2 border rounded-lg px-2.5 py-1 mt-1"
-              style={{
-                backgroundColor: "rgba(88, 32, 228, 0.04)",
-                borderColor: "rgba(88, 32, 228, 0.08)",
-              }}
-            >
-              <span
-                className="w-1.5 h-1.5 rounded-full animate-pulse"
-                style={{ backgroundColor: "var(--primary)" }}
-              />
-              <span
-                className="text-[11px] font-bold uppercase tracking-wider"
-                style={{ color: "var(--primary)" }}
-              >
-                All Systems Operational
-              </span>
-            </div>
+            <ul className="flex items-center gap-5">
+              <li>
+                <a href="https://github.com/devmishu" target="_blanck">
+                  <FaGithub className="w-4 h-4 text-zinc-600 transition-colors" />
+                </a>
+              </li>
+              <li>
+                <a href="https://www.linkedin.com/in/mishudeb" target="_blanck">
+                  <FaLinkedinIn className="w-4 h-4 text-zinc-600 transition-colors" />
+                </a>
+              </li>
+              <li>
+                <a href="https://mishudebnath.vercel.app/" target="_blanck">
+                  <FaGlobe className="w-4 h-4 text-zinc-600 transition-colors" />
+                </a>
+              </li>
+            </ul>
           </div>
         </div>
 
         {/* Bottom Section: Copyright & Legal Links */}
-        <div className="flex flex-col sm:flex-row items-center justify-between gap-4 pt-8 w-full">
+        <div className="flex flex-col sm:flex-row items-center justify-center gap-4 pt-8 w-full">
           <p className="text-xs font-medium text-zinc-400">
             &copy; {currentYear} ToolVerse. All rights reserved. Developed by
             Mishu Debnath.
           </p>
-          <div className="flex items-center gap-6 text-xs font-medium text-zinc-400">
-            <Link
-              href="/privacy"
-              className="transition-colors"
-              onMouseEnter={(e) =>
-                (e.currentTarget.style.color = "var(--primary)")
-              }
-              onMouseLeave={(e) => (e.currentTarget.style.color = "")}
-            >
-              Privacy Policy
-            </Link>
-            <Link
-              href="/terms"
-              className="transition-colors"
-              onMouseEnter={(e) =>
-                (e.currentTarget.style.color = "var(--primary)")
-              }
-              onMouseLeave={(e) => (e.currentTarget.style.color = "")}
-            >
-              Terms of Service
-            </Link>
-          </div>
         </div>
       </div>
     </footer>

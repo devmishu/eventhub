@@ -1,6 +1,5 @@
 "use client";
 
-import React from "react";
 import {
   Button,
   Card,
@@ -14,10 +13,14 @@ import { CalendarDays, ArrowRight } from "lucide-react";
 import toast from "react-hot-toast";
 import { createEvent } from "@/lib/actions/events";
 import { useSession } from "@/lib/auth-client";
+import { useRouter } from "next/navigation";
+// import { redirect } from "next/navigation";
 
 export default function CreateEventForm() {
   const session = useSession();
   const user = session?.data?.user;
+
+  const router = useRouter();
 
   const onSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
@@ -32,22 +35,22 @@ export default function CreateEventForm() {
       | "price"
       | "date"
       | "priority"
-      | "imageUrl",
+      | "imageUrl"
+      | "location"
+      | "category",
       string
     >;
 
     const newEvent = {
       ...eventData,
       price: Number(eventData.price),
-      location: "sylhet",
-      category: "Music",
       userId: user?.id,
     };
 
     try {
       const data = await createEvent(newEvent);
       toast.success(`${data.message}`);
-      // router.push(`/dashboard/${user?.role}/myprompt`);
+      router.push("/manage-events");
     } catch (error: any) {
       console.error("create prompt failed:", error);
       toast.error("create prompt failed:", error);
@@ -159,10 +162,39 @@ export default function CreateEventForm() {
               </div>
             </div>
 
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
+              <div className="w-full">
+                <label className="text-xs font-bold text-zinc-700 mb-1.5 block">
+                  Category
+                </label>
+                <select
+                  name="category"
+                  className="w-full h-11 bg-white border border-zinc-200 rounded-xl px-3.5 text-sm font-medium text-zinc-800 focus:outline-none focus:border-zinc-400 border border-zinc-200 transition-all cursor-pointer appearance-none shadow-xs"
+                  defaultValue="medium"
+                >
+                  <option value="music">Music</option>
+                  <option value="progming">Progming</option>
+                </select>
+              </div>
+
+              <div className="w-full">
+                <label className="text-xs font-bold text-zinc-700 mb-1.5 block">
+                  Location
+                </label>
+                <select
+                  name="location"
+                  className="w-full h-11 bg-white border border-zinc-200 rounded-xl px-3.5 text-sm font-medium text-zinc-800 focus:outline-none focus:border-zinc-400 border border-zinc-200 transition-all cursor-pointer appearance-none shadow-xs"
+                  defaultValue="medium"
+                >
+                  <option value="sylhet">Sylhet</option>
+                  <option value="dhaka">Dhaka</option>
+                </select>
+              </div>
+            </div>
             {/* Optional Image URL */}
             <TextField name="imageUrl" type="url">
               <Label className="text-xs font-bold text-zinc-700 mb-1.5 block">
-                Optional Image URL
+                Image URL
               </Label>
               <Input
                 placeholder="https://example.com/image.jpg"

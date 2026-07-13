@@ -14,9 +14,11 @@ export interface EventData {
   userId: string;
 }
 
-export const getEvents = async ():Promise<EventData[]> => {
-    return serverFetch<EventData[]>(`/api/events`);
+export const getEvents = async (quaryString:string):Promise<EventData[]> => {
+    return serverFetch<EventData[]>(`/api/events?${quaryString}`);
 } 
+
+
 export const getFeaturedEvents = async ():Promise<EventData[]> => {
     return serverFetch<EventData[]>(`/api/events/featured`);
 } 

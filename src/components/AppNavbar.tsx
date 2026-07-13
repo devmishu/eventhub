@@ -2,7 +2,7 @@
 
 import { useState } from "react";
 import { signOut, useSession } from "@/lib/auth-client";
-import { Button, Avatar, Dropdown } from "@heroui/react";
+import { Button, Avatar } from "@heroui/react";
 import { Calendar, LogOut, Menu, X } from "lucide-react";
 import Link from "next/link";
 import { usePathname, useRouter } from "next/navigation";
@@ -19,7 +19,7 @@ export default function AppNavbar() {
   const handleSignOut = async () => {
     await signOut();
     setIsMenuOpen(false);
-    router.push("/login");
+    router.push("/");
   };
 
   // বেস নেভিগেশন লিংক যা সবার জন্য দৃশ্যমান
@@ -138,9 +138,9 @@ export default function AppNavbar() {
                 Login
               </Link>
               <Link href={"/register"}>
-                <Button className="h-9 px-4 rounded-xl font-bold text-zinc-800 bg-zinc-100 hover:bg-zinc-200 text-sm cursor-pointer transition-colors">
+                <button className="h-9 px-4 rounded-xl font-bold text-zinc-800 bg-zinc-100 hover:bg-zinc-200 text-sm cursor-pointer transition-colors">
                   Register
-                </Button>
+                </button>
               </Link>
             </div>
           )}

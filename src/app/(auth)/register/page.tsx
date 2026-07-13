@@ -1,12 +1,13 @@
 "use client";
 
 import React from "react";
-import { Form, TextField, Label, Input, FieldError, Button, Link } from "@heroui/react";
+import { Form, TextField, Label, Input, FieldError, Button } from "@heroui/react";
 import { authClient } from "@/lib/auth-client";
 import toast from "react-hot-toast";
 import { redirect } from "next/navigation";
 import { FcGoogle } from "react-icons/fc";
 import { FaGithub } from "react-icons/fa6";
+import Link from "next/link";
 
 export default function RegisterPage(): React.JSX.Element {
   
@@ -157,7 +158,7 @@ export default function RegisterPage(): React.JSX.Element {
       <div className="text-center mt-6">
         <p className="text-xs font-semibold text-zinc-500">
           Already have an account?{" "}
-          <Link 
+          <Link
             href="/login" 
             className="text-xs font-bold hover:underline transition-all"
             style={{ color: "var(--primary)" }}
