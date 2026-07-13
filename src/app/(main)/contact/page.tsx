@@ -1,11 +1,13 @@
+import NewsletterSection from "@/components/NewsletterSection";
+import ContactForm from "../_components/ContactForm";
+import ContactHero from "../_components/ContactHero";
 
-
-const ContactPage = () => {
-    return (
-        <div>
-            ContactPage
-        </div>
-    );
-};
-
-export default ContactPage;
+export default function ContactPage(): React.JSX.Element {
+  return (
+    <main className="min-h-screen bg-[#fbfbfe]">
+      <ContactHero />
+      <ContactForm />
+      <NewsletterSection />
+    </main>
+  );
+}

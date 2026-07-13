@@ -1,6 +1,6 @@
 "use client";
 
-import React from "react";
+import React, { useState } from "react";
 import {
   Form,
   TextField,
@@ -12,24 +12,21 @@ import {
 } from "@heroui/react";
 import { authClient } from "@/lib/auth-client";
 import toast from "react-hot-toast";
-import { FcGoogle } from "react-icons/fc";
-import { FaGithub } from "react-icons/fa6";
+import { useRouter } from "next/navigation";
 
 export default function LoginPage(): React.JSX.Element {
-  // ডেমো কোডের মতো ফর্ম সাবমিট হ্যান্ডলার
+  const router = useRouter();
+  const [loading, setLoading] = useState<boolean>(false);
+
+  
+  const [email, setEmail] = useState<string>("demo@gmail.com");
+  const [password, setPassword] = useState<string>("Demouser123");
+
   const onSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
+    setLoading(true);
 
-    // e.currentTarget অথবা e.target ব্যবহার করা যায়
-    const formData = new FormData(e.currentTarget);
-    const registerData = Object.fromEntries(formData.entries()) as Record<
-      string,
-      string
-    >;
-
-    const { email, password } = registerData;
-
-    console.log(registerData);
+    console.log({ email, password });
 
     const { data, error } = await authClient.signIn.email({
       email,
@@ -37,8 +34,11 @@ export default function LoginPage(): React.JSX.Element {
       callbackURL: "/",
     });
 
+    setLoading(false);
+
     if (data) {
-      toast.success("login successfully");
+      toast.success("Login successfully");
+      router.push("/");
     }
     if (error) {
       toast.error(error.message || "Something went wrong");
@@ -47,55 +47,33 @@ export default function LoginPage(): React.JSX.Element {
   };
 
   return (
-    <div className="h-screen flex flex-col justify-center items-center">
-      <div className=" w-full max-w-110 bg-white border border-zinc-100 rounded-[24px] p-8 md:p-10 shadow-[0_8px_30px_rgb(0,0,0,0.02)] mx-auto">
+    <div className="min-h-screen flex flex-col justify-center items-center bg-[#fbfbfe]">
+      <div className="w-full max-w-[440px] bg-white border border-zinc-100 rounded-[24px] p-8 md:p-10 shadow-[0_8px_30px_rgb(0,0,0,0.02)] mx-auto">
         {/* Header Titles */}
-        <div className="text-center mb-6">
+        <div className="text-center mb-8">
           <h2 className="text-2xl font-bold text-zinc-900 tracking-tight">
             Welcome Back
           </h2>
           <p className="text-xs font-medium text-zinc-400 mt-1">
-            Login to your acount
+            Login to your account
           </p>
         </div>
 
-        {/* Social Registration Buttons */}
-        <div className="flex flex-col gap-3 mb-5">
-          <button
-            type="button"
-            className="w-full h-11 border border-zinc-200 hover:bg-zinc-50 rounded-xl flex items-center justify-center gap-2.5 text-sm font-semibold text-zinc-700 transition-colors cursor-pointer"
-          >
-            <FcGoogle className="w-4 h-4 text-zinc-900 fill-current" />
-            <span>Continue with Google</span>
-          </button>
-
-          <button
-            type="button"
-            className="w-full h-11 border border-zinc-200 hover:bg-zinc-50 rounded-xl flex items-center justify-center gap-2.5 text-sm font-semibold text-zinc-700 transition-colors cursor-pointer"
-          >
-            <FaGithub className="w-4 h-4 text-zinc-900 fill-current" />
-            <span>Continue with GitHub</span>
-          </button>
-        </div>
-
-        {/* Divider */}
-        <div className="relative flex items-center justify-center my-6">
-          <div className="absolute inset-0 flex items-center">
-            <div className="w-full border-t border-zinc-100"></div>
-          </div>
-          <span className="relative px-3 bg-white text-xs font-semibold text-zinc-400 uppercase tracking-wider">
-            or
-          </span>
-        </div>
-
         {/* HeroUI Type-safe Form Component */}
-        <Form className="flex flex-col gap-5 w-full" onSubmit={onSubmit}>
+        <Form
+          className="flex flex-col gap-5 w-full"
+          onSubmit={onSubmit}
+          autoComplete="off"
+        >
           {/* Email Field with Validation */}
           <TextField
             isRequired
             name="email"
             type="email"
             className="w-full"
+            isDisabled={loading}
+            value={email}
+            onChange={(value) => setEmail(value)}
             validate={(value) => {
               if (!/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i.test(value)) {
                 return "Please enter a valid email address";
@@ -107,8 +85,8 @@ export default function LoginPage(): React.JSX.Element {
               Email
             </Label>
             <Input
-              defaultValue={"demo@gmail.com"}
               placeholder="Enter your email"
+              autoComplete="new-password"
               className="w-full h-11 bg-white border border-zinc-200 rounded-xl px-3.5 text-sm font-medium text-zinc-800 placeholder:text-zinc-400 focus-within:outline-2 focus-within:outline-zinc-300 focus-within:border-transparent transition-all"
             />
             <FieldError className="text-xs text-red-500 font-medium mt-1 text-left" />
@@ -120,6 +98,9 @@ export default function LoginPage(): React.JSX.Element {
             name="password"
             type="password"
             className="w-full"
+            isDisabled={loading}
+            value={password}
+            onChange={(value) => setPassword(value)}
             validate={(value) => {
               if (value.length < 8) {
                 return "Password must be at least 8 characters";
@@ -131,33 +112,34 @@ export default function LoginPage(): React.JSX.Element {
               Password
             </Label>
             <Input
-                defaultValue={'Demouser123'}
-              placeholder="Enter your  password"
+              placeholder="Enter your password"
+              autoComplete="new-password"
               className="w-full h-11 bg-white border border-zinc-200 rounded-xl px-3.5 text-sm font-medium text-zinc-800 placeholder:text-zinc-400 focus-within:outline-2 focus-within:outline-zinc-300 focus-within:border-transparent transition-all"
             />
             <FieldError className="text-xs text-red-500 font-medium mt-1 text-left" />
           </TextField>
 
-          {/* Register Submit Button */}
+          {/* Login Submit Button */}
           <Button
             type="submit"
+            isLoading={loading}
             className="w-full h-11 rounded-xl text-white font-bold text-sm shadow-xs transition-transform active:scale-98 mt-2 cursor-pointer"
             style={{ backgroundColor: "var(--primary)" }}
           >
-            Login
+            {loading ? "Logging in..." : "Login"}
           </Button>
         </Form>
 
         {/* Bottom Redirect Link */}
         <div className="text-center mt-6">
           <p className="text-xs font-semibold text-zinc-500">
-            Don't have an acount?{" "}
+            Don't have an account?{" "}
             <Link
               href="/register"
               className="text-xs font-bold hover:underline transition-all"
               style={{ color: "var(--primary)" }}
             >
-              register
+              Register
             </Link>
           </p>
         </div>

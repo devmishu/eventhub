@@ -1,6 +1,5 @@
 "use client";
 import Link from "next/link";
-import { Button } from "@heroui/react";
 import { FaGithub, FaLinkedinIn, FaGlobe } from "react-icons/fa6";
 import { BsEnvelopeFill, BsTelephoneFill, BsGeoAltFill } from "react-icons/bs";
 import { Calendar } from "lucide-react";

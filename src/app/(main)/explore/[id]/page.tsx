@@ -36,11 +36,17 @@ export default async function EventDetails({
     endTime: "10:00 PM",
     category: "Music",
     organizer: "EventHub Team",
-    dateBadge: { month: "JUN", day: "15" },
   };
 
   console.log(id);
+
   const event = singleEventData;
+
+  const eventDate = new Date(event.date);
+  const month = eventDate.toLocaleString("en-US", {
+    month: "short",
+  });
+  const day = eventDate.getDate();
 
   return (
     <section className="w-full bg-[#fbfbfe] py-8">
@@ -82,10 +88,10 @@ export default async function EventDetails({
                   color: "var(--primary)",
                 }}
               >
-                {event.dateBadge.month}
+                {month}
               </div>
               <div className="flex-1 flex items-center justify-center text-lg font-black text-zinc-800 px-2">
-                {event.dateBadge.day}
+                {day}
               </div>
             </div>
 

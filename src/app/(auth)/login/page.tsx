@@ -16,11 +16,11 @@ import { FaGithub } from "react-icons/fa6";
 import Link from "next/link";
 
 export default function LoginPage(): React.JSX.Element {
-  // ডেমো কোডের মতো ফর্ম সাবমিট হ্যান্ডলার
+  
   const onSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
 
-    // e.currentTarget অথবা e.target ব্যবহার করা যায়
+    
     const formData = new FormData(e.currentTarget);
     const registerData = Object.fromEntries(formData.entries()) as Record<
       string,
@@ -46,6 +46,18 @@ export default function LoginPage(): React.JSX.Element {
     console.log({ data, error });
   };
 
+  const googleSignIn = async () => {
+    const data = await authClient.signIn.social({
+      provider: "google",
+    });
+  };
+
+  const githubSignIn = async () => {
+    const data = await authClient.signIn.social({
+      provider: "github",
+    });
+  };
+
   return (
     <div className="h-screen flex flex-col justify-center items-center">
       <div className=" w-full max-w-[440px] bg-white border border-zinc-100 rounded-[24px] p-8 md:p-10 shadow-[0_8px_30px_rgb(0,0,0,0.02)] mx-auto">
@@ -62,6 +74,7 @@ export default function LoginPage(): React.JSX.Element {
         {/* Social Registration Buttons */}
         <div className="flex flex-col gap-3 mb-5">
           <button
+            onClick={googleSignIn}
             type="button"
             className="w-full h-11 border border-zinc-200 hover:bg-zinc-50 rounded-xl flex items-center justify-center gap-2.5 text-sm font-semibold text-zinc-700 transition-colors cursor-pointer"
           >
@@ -70,6 +83,7 @@ export default function LoginPage(): React.JSX.Element {
           </button>
 
           <button
+            onClick={githubSignIn}
             type="button"
             className="w-full h-11 border border-zinc-200 hover:bg-zinc-50 rounded-xl flex items-center justify-center gap-2.5 text-sm font-semibold text-zinc-700 transition-colors cursor-pointer"
           >

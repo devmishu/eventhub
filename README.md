@@ -1,36 +1,58 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# 🎪 EventHub - Premium Event Management Platform (Frontend)
 
-## Getting Started
+An elegant, modern, and production-ready full-stack event management web application built with the **MERN Stack**, **TypeScript**, and **Next.js**. The platform focuses on high-performance rendering, stunning visual aesthetics inspired by Apple-like minimalism, and a seamless developer-to-user experience.
 
-First, run the development server:
+## 🚀 Live Demo & Repository
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+- **Live Site:** [Insert Live Link Here]
+- **Backend Repository:** [https://github.com/devmishu/eventhub-server]
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+---
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## 🔐 Demo Credentials
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+To explore the application without manual registration, please use the following credentials:
 
-## Learn More
+| Role              | Email             | Password       |
+| :---------------- | :---------------- | :------------- |
+| **User Account**  | `demo@gmail.com`  | `Demouser123`  |
 
-To learn more about Next.js, take a look at the following resources:
+---
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+## ✨ Key Features & Implementation Detail
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+### 1. 🎨 Visual Craftsmanship (UI/UX)
+- **Apple-Inspired Design:** Minimal, clean, and premium user interface with consistent spacing and modern layouts.
+- **Micro-Interactions:** Smooth hover effects and interactive feedback on buttons, tabs, and actions.
+- **Fully Responsive:** Perfectly optimized for seamless browsing on mobile, tablet, and desktop devices.
 
-## Deploy on Vercel
+### 2. 🏠 Core Architecture
+- **Dynamic Navbar:** Context-aware navigation bar that automatically toggles routes based on the user's login state.
+- **Interactive Landing Page:** Includes a compact Hero section with dynamic action buttons and multiple information blocks.
+- **Comprehensive Listing & Grid:** Uniform event cards arranged in a clean desktop grid with built-in skeleton loaders for smooth data fetching.
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+### 3. 🔍 Search & Filtering System
+- **Advanced Query Engine:** Live search bar combined with multi-field filtering (e.g., by category and location) and flexible sorting.
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+### 4. 📊 Data Analytics Dashboard
+- **Interactive BarChart:** Integrated Recharts framework to group data dynamically, showing total event volume and pricing metrics by category.
+
+### 5. 🔒 Security & Management Hub
+- **Protected Routes:** Secure form logic that restricts unauthorized users and manages application state smoothly.
+- **Management Matrix:** A clean administrative table viewport to view, audit, and delete dynamic item listings efficiently.
+
+---
+
+## 🛠️ Frontend Tech Stack
+
+- **Framework:** Next.js 15 (App Router) / React 19
+- **Language:** TypeScript (Strictly Typed)
+- **Styling & Components:** Tailwind CSS, HeroUI (formerly NextUI)
+- **Data Visualization:** Recharts
+- **State Management & Auth Client:** BetterAuth / AuthClient Utility
+- **Notifications:** React Hot Toast
+- **Icons:** Lucide React, React Icons
+
+---
+
+

@@ -82,7 +82,7 @@ export default function PopularCategories(): React.JSX.Element {
           Popular Categories
         </h2>
 
-        {/* উইডথ ছাড়া শুধুমাত্র গ্রিড গ্যাপ দিয়ে কার্ড কন্ট্রোল করা হয়েছে */}
+     
         <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-7 gap-4">
           {categories.map((category: CategoryItem, index: number) => {
             const IconComponent = category.icon;

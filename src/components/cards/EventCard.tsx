@@ -70,12 +70,12 @@ export function EventCard({
           {title}
         </h3>
 
-        {/* 1. shortDescription Title এর ঠিক নিচে */}
+        {/* 1. shortDescription Title */}
         <p className="text-zinc-500 text-xs font-medium leading-relaxed line-clamp-2 mb-3 min-h-[32px]">
           {shortDescription}
         </p>
 
-        {/* 2. Location এবং Price একসাথে এক সারিতে */}
+        {/* 2. Location   */}
         <div className="flex items-center justify-between w-full gap-2 mb-4">
           {/* Location Info */}
           <div className="flex items-center gap-1 text-zinc-400 text-xs font-medium line-clamp-1 max-w-[70%]">
@@ -83,7 +83,7 @@ export function EventCard({
             <span>{location}</span>
           </div>
 
-          {/* Price Tag Location এর পাশে */}
+          {/* Price */}
           <span className="text-sm font-black text-zinc-800 flex-shrink-0">
             {price === 0 ? "Free" : `$${price}`}
           </span>

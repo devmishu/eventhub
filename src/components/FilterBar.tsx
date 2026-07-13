@@ -14,7 +14,7 @@ export default function FilterBar({
 }: FilterBarProps): React.JSX.Element {
   const router = useRouter();
 
-  // 🌟 URL searchParams থেকে স্টেট ইনিশিয়ালাইজেশন
+ 
   const [searchQuery, setSearchQuery] = useState<string>(
     (filters?.search as string) || "",
   );
@@ -28,7 +28,6 @@ export default function FilterBar({
     (filters?.sortBy as string) || "Newest",
   );
 
-  // 🔄 যখনই কোনো স্টেট চেঞ্জ হবে, URL অটোমেটিক আপডেট হবে
   useEffect(() => {
     const sp = new URLSearchParams();
 
@@ -53,7 +52,7 @@ export default function FilterBar({
     router.push(path, { scroll: false });
   }, [searchQuery, selectedCategory, selectedLocation, selectedSort, router]);
 
-  // হিরোইউ (HeroUI) ট্রিগারের অবিকল স্টাইল এবং কাস্টম ডাউন-অ্যারো ব্যাকগ্রাউন্ড
+
   const selectClassName =
     "w-full bg-white rounded-xl border border-zinc-200/85 hover:border-zinc-300 focus:border-zinc-400 focus:outline-hidden h-11 pl-4 pr-10 text-zinc-800 font-bold text-sm shadow-xs transition-all appearance-none cursor-pointer bg-[url('data:image/svg+xml;charset=UTF-8,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%2224%22%20height%3D%2224%22%20viewBox%3D%220%200%2024%2024%22%20fill%3D%22none%22%20stroke%3D%22%2371717a%22%20stroke-width%3D%222%22%20stroke-linecap%3D%22round%22%20stroke-linejoin%3D%22round%22%3E%3Cpolyline%20points%3D%226%209%2012%2015%2018%209%22%3E%3C%2Fpolyline%3E%3C%2Fsvg%3E')] bg-[length:16px] bg-[position:right_16px_center] bg-no-repeat";
 
@@ -102,11 +101,16 @@ export default function FilterBar({
                 className={selectClassName}
               >
                 <option value="All Categories">All Categories</option>
-                <option value="Music">Music</option>
-                <option value="Tech">Tech</option>
+                <option value="music">Music</option>
+                <option value="workshop">Workshop</option>
+                <option value="sports">Sports</option>
+                <option value="art">Art</option>
+                <option value="food">Food</option>
               </select>
             </div>
           </div>
+
+         
 
           {/* 2. Location HTML Select Filter */}
           <div className="w-full flex flex-col gap-1.5 items-start">
@@ -123,6 +127,9 @@ export default function FilterBar({
                 <option value="All Locations">All Locations</option>
                 <option value="Dhaka">Dhaka</option>
                 <option value="Sylhet">Sylhet</option>
+                <option value="rajshahi">Rajshahi</option>
+                <option value="chattogram">Chattogram</option>
+                <option value="barishal">Barishal</option>
               </select>
             </div>
           </div>

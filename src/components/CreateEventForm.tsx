@@ -14,7 +14,7 @@ import toast from "react-hot-toast";
 import { createEvent } from "@/lib/actions/events";
 import { useSession } from "@/lib/auth-client";
 import { useRouter } from "next/navigation";
-// import { redirect } from "next/navigation";
+
 
 export default function CreateEventForm() {
   const session = useSession();
@@ -27,7 +27,7 @@ export default function CreateEventForm() {
 
     const formData = new FormData(e.currentTarget);
 
-    // আপনার ফর্মের ডেটা স্ট্রাকচার অনুযায়ী টাইপ কাস্টিং ফিক্স করা হলো
+    
     const eventData = Object.fromEntries(formData.entries()) as Record<
       | "title"
       | "shortDescription"
@@ -61,10 +61,10 @@ export default function CreateEventForm() {
   };
 
   return (
-    // বড় ডিভাইসের জন্য উইডথ max-w-[1000px] বা max-w-5xl এ সেট করা
+    
     <Form className="w-full max-w-[1500px] mx-auto mt-6" onSubmit={onSubmit}>
       <Card className="  flex flex-col gap-8">
-        {/* সেকশন ১: Event Information */}
+        {/* Event Information */}
         <div className="w-full flex flex-col gap-5">
           <div>
             <h3 className="text-lg font-bold text-zinc-900 tracking-tight">
@@ -111,7 +111,7 @@ export default function CreateEventForm() {
           </div>
         </div>
 
-        {/* সেকশন ২: Event Details */}
+        {/*  Event Details */}
         <div className="w-full flex flex-col gap-5 pt-4 border-t border-zinc-100">
           <div className="flex items-center gap-2">
             <CalendarDays

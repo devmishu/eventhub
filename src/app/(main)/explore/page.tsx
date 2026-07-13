@@ -38,12 +38,7 @@ export default async function ExplorePage({
   const eventsData: EvenntResponse = await getEvents(quaryString);
   const allEventsData: Event[] = eventsData.result;
 
-  // const allEventsData: Event[] = await getEvents(quaryString);
-
-  // const promptsData: EvenntResponse = await getAllPrompts(queryString);
-  // const allPromptsData: Event[] = promptsData.result;
-
-  // const allallEventsData = [];
+ 
 
   return (
     <section className="w-full bg-[#fbfbfe] py-12">

@@ -15,14 +15,14 @@ export default function AppNavbar() {
   const { data: session, isPending } = useSession();
   const user = session?.user;
 
-  // লগআউট হ্যান্ডলার ফাংশন
+ 
   const handleSignOut = async () => {
     await signOut();
     setIsMenuOpen(false);
     router.push("/");
   };
 
-  // বেস নেভিগেশন লিংক যা সবার জন্য দৃশ্যমান
+  
   const baseLinks = [
     { name: "Home", path: "/" },
     { name: "Explore Events", path: "/explore" },
@@ -30,7 +30,7 @@ export default function AppNavbar() {
     { name: "Contact", path: "/contact" },
   ];
 
-  // ইউজার লগইন থাকলে অতিরিক্ত মেনু লিংক যুক্ত হবে, ড্রপডাউন থাকবে না
+  
   const navLinks = user
     ? [
         ...baseLinks,
@@ -39,14 +39,14 @@ export default function AppNavbar() {
       ]
     : baseLinks;
 
-  // ডেস্কটপ মেনু স্টাইল
+  
   const getNavLinkClass = (path: string) => {
     const baseClass =
       "text-[15px] font-semibold h-16 flex items-center transition-all duration-200 relative tracking-wide cursor-pointer";
     return `${baseClass} ${pathname === path ? "text-[var(--primary)] font-bold" : "text-zinc-500 hover:text-zinc-900"}`;
   };
 
-  // মোবাইল মেনু স্টাইল
+  
   const getMobileNavLinkClass = (path: string) => {
     const baseClass =
       "w-full py-3 px-4 rounded-xl text-base font-bold transition-all duration-200 block text-left";
@@ -87,7 +87,7 @@ export default function AppNavbar() {
           </Link>
         </div>
 
-        {/* Center Section: Desktop Navigation Links (কন্ডিশনাল ইভেন্ট মেনুসহ) */}
+        {/* Center Section: Desktop Navigation Links  */}
         <ul className="hidden lg:flex items-center gap-8 h-full">
           {navLinks.map((link) => (
             <li key={link.path}>
@@ -161,7 +161,7 @@ export default function AppNavbar() {
             </Link>
           ))}
 
-          {/* মোবাইল স্ক্রিনে লগআউট অপশন একদম নিচে যুক্ত করা হলো */}
+          
           {user && (
             <button
               onClick={handleSignOut}

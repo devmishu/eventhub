@@ -21,12 +21,12 @@ export interface Event {
 export default async function ManageEventPage() {
   const user = await getUser();
 
-  // ডেটাবেজ বা API থেকে প্রোডাক্ট/ইভেন্ট ডেটা ফেচিং
+  
   const myEvents: Event[] = (await getMyEvents(user?.id)) || [];
 
   const handleDeletEvent = async (eventId: string) => {
     "use server";
-    // if (!eventId) return;
+    if (!eventId) return;
     await deleteEvent(eventId);
   };
 
@@ -43,16 +43,16 @@ export default async function ManageEventPage() {
           </p>
         </div>
 
-        {/* কন্ডিশনাল রেন্ডারিং: ইভেন্ট চেক */}
+       
         {myEvents.length === 0 ? (
           <EmptyState
             title="No Listed Events Yet"
             description="You haven't published any events under your account. Create one now to reach your attendees!"
             buttonText="Create Your First Event"
-            buttonHref="/add-event" // আপনার প্রোজেক্ট অনুযায়ী পাথটি পরিবর্তন করুন
+            buttonHref="/add-event"
           />
         ) : (
-          /* HeroUI v3 Table Component */
+          
           <ManageEventsTable
             events={myEvents}
             onHandleDeletEvent={handleDeletEvent}

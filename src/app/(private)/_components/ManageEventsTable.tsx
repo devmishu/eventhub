@@ -3,6 +3,7 @@
 import React from "react";
 import { Table, Button, AlertDialog } from "@heroui/react";
 import { Eye, Trash2, DollarSign } from "lucide-react";
+import Link from "next/link";
 
 interface ProductItem {
   _id?: string;
@@ -26,7 +27,7 @@ export function ManageEventsTable({
 }: ManageEventsTableProps): React.JSX.Element {
   const handleView = (id: string) => {
     console.log("View clicked for ID:", id);
-    // নেভিগেশন বা ডিটেইলস মডাল ওপেন করার লজিক
+    
   };
 
   return (
@@ -142,15 +143,17 @@ export function ManageEventsTable({
                     <Table.Cell className="py-4 px-6 text-right">
                       <div className="flex items-center justify-end gap-2">
                         {/* View Details Button (Theme Primary Color Outline) */}
-                        <Button
-                          isIconOnly
-                          size="sm"
-                          variant="bordered"
-                          onClick={() => handleView(item._id)}
-                          className="border-zinc-200 hover:border-zinc-300 hover:bg-zinc-50 rounded-xl cursor-pointer"
-                        >
-                          <Eye className="w-4 h-4 text-zinc-600" />
-                        </Button>
+                        <Link href={`/explore/${item._id}`}>
+                          <button
+                            isIconOnly
+                            size="sm"
+                            variant="bordered"
+                            onClick={() => handleView(item._id)}
+                            className="border-zinc-200 hover:border-zinc-300 hover:bg-zinc-50 rounded-xl cursor-pointer"
+                          >
+                            <Eye className="w-4 h-4 text-zinc-600" />
+                          </button>
+                        </Link>
 
                         {/* Delete Button */}
 

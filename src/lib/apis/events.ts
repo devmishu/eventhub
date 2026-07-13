@@ -14,7 +14,7 @@ export interface EventData {
   userId: string;
 }
 
-export const getEvents = async (quaryString:string):Promise<EventData[]> => {
+export const getEvents = async (quaryString:string | null):Promise<EventData[]> => {
     return serverFetch<EventData[]>(`/api/events?${quaryString}`);
 } 
 

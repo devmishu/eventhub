@@ -6,7 +6,7 @@ import { useRouter } from "next/navigation";
 
 
 
-// প্রপ্সের টাইপ ডেফিনিশন
+
 interface PaginationWithSummaryProps {
   total: number;
 }
@@ -39,7 +39,7 @@ export function PaginationWithSummary({
     router.push(path);
   }, [page, router]);
 
-  // রিটার্ন টাইপ নির্ধারণ করা হয়েছে (number | string)[]
+ 
   const getPageNumbers = (): (number | string)[] => {
     const pages: (number | string)[] = [];
     if (totalPages <= 0) return pages;

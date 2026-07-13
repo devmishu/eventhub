@@ -3,24 +3,9 @@ import { getUserToken } from "./session";
 const baseurl = process.env.NEXT_PUBLIC_BASE_URL
 
 
-// const authHeader = async () => {
-//     const token = await getUserToken();
-//     const header = token ? {
-//         authorization: `Bearer ${token}`
-//     } : {};
-//     return header;
-// }
 
-// // headers এর জন্য নির্দিষ্ট টাইপ ডিক্লেয়ারেশন
-// const authHeader = async (): Promise<Record<string, string>> => {
-//   const token = await getUserToken();
-//   const header = token ? {
-//         authorization: `Bearer ${token}`
-//     } : {};
-//   return header;
-// };
 
-// headers এর জন্য নির্দিষ্ট টাইপ ডিক্লেয়ারেশন
+
 const authHeader = async (): Promise<Record<string, string>> => {
   const token = await getUserToken();
   return token ? { authorization: `Bearer ${token}` } : {};
@@ -94,7 +79,7 @@ export const serverMutation = async <T>(
 export const serverDelete = async (path:string) => {
     const res = await fetch(`${baseurl}${path}`, {
         method: 'DELETE',
-        // ...await authHeader(),
+        headers: await authHeader(),
     });
 
     return res.json();

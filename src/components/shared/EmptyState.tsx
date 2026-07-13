@@ -12,11 +12,11 @@ export function EmptyState({
   title = "No Events Found",
   description = "You haven't created any events yet. Start by creating your first amazing event!",
   buttonText = "Create Event",
-  buttonHref = "/events/create", // আপনার ক্রিয়েট ইভেন্ট পেজের রাউট দিন
+  buttonHref = "/events/create",
 }: EmptyStateProps) {
   return (
     <div className="flex flex-col items-center justify-center text-center p-8 md:p-12 bg-white rounded-3xl border border-zinc-200/60 shadow-xs max-w-xl mx-auto my-6">
-      {/* ইলাস্ট্রেশন বা আইকন কন্টেইনার */}
+     
       <div className="w-16 h-16 bg-indigo-50 text-[#5820e4] flex items-center justify-center rounded-2xl mb-6">
         <svg
           xmlns="http://www.w3.org/2000/svg"
@@ -34,7 +34,7 @@ export function EmptyState({
         </svg>
       </div>
 
-      {/* কন্টেন্ট টেক্সট */}
+     
       <h3 className="text-xl font-bold text-zinc-900 tracking-tight mb-2">
         {title}
       </h3>
@@ -42,7 +42,7 @@ export function EmptyState({
         {description}
       </p>
 
-      {/* অ্যাকশন বাটন */}
+     
 
       <Link href={buttonHref}>
         <button className="bg-[#5820e4] text-white h-11 px-6 rounded-xl font-semibold shadow-md transition-transform active:scale-95 hover:opacity-90">

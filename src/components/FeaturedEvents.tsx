@@ -4,7 +4,7 @@ import { EventCard } from "./cards/EventCard";
 import { getEvents, getFeaturedEvents } from "@/lib/apis/events";
 import Link from "next/link";
 
-// ১. টাইপ সেফটির জন্য ইন্টারফেস ডিফাইন (ভবিষ্যতে API রেসপন্সও এই টাইপ ফলো করবে)
+
 export interface Event {
   _id?: string;
   title: string;
@@ -27,14 +27,19 @@ interface StatItem {
   colorVar: string;
 }
 
+interface EvenntResponse {
+  result: Event[];
+}
+
 export default async function FeaturedEvents(): React.JSX.Element {
-  const events = await getEvents();
   const featuredEvents = await getFeaturedEvents();
 
-  // নিচের ৪টি স্ট্যাটাস কাউন্টারের ডেটা
+  const eventsData: EvenntResponse = await getEvents(null);
+
+  
   const stats: StatItem[] = [
     {
-      value: events.length,
+      value: eventsData.total,
       label: "Total Events",
       icon: Calendar,
       bgVar: "var(--cat-music-bg)",
@@ -48,7 +53,7 @@ export default async function FeaturedEvents(): React.JSX.Element {
       colorVar: "var(--cat-sports-text)",
     },
     {
-      value: 10,
+      value: 1000,
       label: "Attendees",
       icon: Ticket,
       bgVar: "var(--cat-workshop-bg)",
@@ -81,7 +86,7 @@ export default async function FeaturedEvents(): React.JSX.Element {
           </Link>
         </div>
 
-        {/* Events Responsive Grid (৪টি কলাম, কোনো ফিক্সড উইডথ ছাড়া) */}
+   
         <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6 mb-16">
           {featuredEvents.map((event) => (
             <EventCard
@@ -118,7 +123,7 @@ export default async function FeaturedEvents(): React.JSX.Element {
                 {/* Stats Text */}
                 <div className="flex flex-col text-left">
                   <span className="text-xl md:text-2xl font-extrabold text-zinc-900 leading-none">
-                    {stat.value}
+                    {stat.value}+
                   </span>
                   <span className="text-xs font-medium text-zinc-400 mt-1">
                     {stat.label}
