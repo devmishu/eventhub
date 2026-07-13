@@ -26,7 +26,7 @@ export function ManageEventsTable({
   onHandleDeletEvent,
 }: ManageEventsTableProps): React.JSX.Element {
   const handleView = (id: string) => {
-    console.log("View clicked for ID:", id);
+   
     
   };
 

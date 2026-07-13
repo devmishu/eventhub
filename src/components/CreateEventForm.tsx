@@ -55,9 +55,6 @@ export default function CreateEventForm() {
       console.error("create prompt failed:", error);
       toast.error("create prompt failed:", error);
     }
-
-    console.log("form data:", eventData);
-    console.log("new form data:", newEvent);
   };
 
   return (

@@ -18,7 +18,6 @@ export default function LoginPage(): React.JSX.Element {
   const router = useRouter();
   const [loading, setLoading] = useState<boolean>(false);
 
-  
   const [email, setEmail] = useState<string>("demo@gmail.com");
   const [password, setPassword] = useState<string>("Demouser123");
 
@@ -26,7 +25,7 @@ export default function LoginPage(): React.JSX.Element {
     e.preventDefault();
     setLoading(true);
 
-    console.log({ email, password });
+ 
 
     const { data, error } = await authClient.signIn.email({
       email,
@@ -43,7 +42,7 @@ export default function LoginPage(): React.JSX.Element {
     if (error) {
       toast.error(error.message || "Something went wrong");
     }
-    console.log({ data, error });
+   
   };
 
   return (
@@ -122,11 +121,10 @@ export default function LoginPage(): React.JSX.Element {
           {/* Login Submit Button */}
           <Button
             type="submit"
-            isLoading={loading}
             className="w-full h-11 rounded-xl text-white font-bold text-sm shadow-xs transition-transform active:scale-98 mt-2 cursor-pointer"
             style={{ backgroundColor: "var(--primary)" }}
           >
-            {loading ? "Logging in..." : "Login"}
+            Login
           </Button>
         </Form>
 

@@ -29,7 +29,7 @@ export default function LoginPage(): React.JSX.Element {
 
     const { email, password } = registerData;
 
-    console.log(registerData);
+    
 
     const { data, error } = await authClient.signIn.email({
       email,
@@ -43,7 +43,7 @@ export default function LoginPage(): React.JSX.Element {
     if (error) {
       toast.error(error.message || "Something went wrong");
     }
-    console.log({ data, error });
+   
   };
 
   const googleSignIn = async () => {

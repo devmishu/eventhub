@@ -32,13 +32,13 @@ export default function RegisterPage(): React.JSX.Element {
 
     const { name, email, password, image } = registerData;
 
-    console.log(registerData);
+   
 
     const { data, error } = await authClient.signUp.email({
       name,
       email,
       password,
-      image, 
+      image,
     });
 
     setLoading(false);
@@ -51,7 +51,7 @@ export default function RegisterPage(): React.JSX.Element {
     if (error) {
       toast.error(error.message || "Something went wrong");
     }
-    console.log({ data, error });
+    
   };
 
   const googleSignIn = async () => {
@@ -199,11 +199,10 @@ export default function RegisterPage(): React.JSX.Element {
           {/* Register Submit Button */}
           <Button
             type="submit"
-            isLoading={loading}
             className="w-full h-11 rounded-xl text-white font-bold text-sm shadow-xs transition-transform active:scale-98 mt-2 cursor-pointer"
             style={{ backgroundColor: "var(--primary)" }}
           >
-            {loading ? "Registering..." : "Register"}
+            Register
           </Button>
         </Form>
 

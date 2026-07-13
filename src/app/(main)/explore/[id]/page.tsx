@@ -28,7 +28,7 @@ export default async function EventDetails({
   const { id } = await params;
   const singleEvents: SingleEventDetails = await getSingleEvents(id);
 
-  console.log("singleEvents:", singleEvents);
+ 
 
   const singleEventData = {
     ...singleEvents,
@@ -38,7 +38,7 @@ export default async function EventDetails({
     organizer: "EventHub Team",
   };
 
-  console.log(id);
+  
 
   const event = singleEventData;
 
