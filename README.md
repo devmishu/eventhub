@@ -4,8 +4,8 @@ An elegant, modern, and production-ready full-stack event management web applica
 
 ## 🚀 Live Demo & Repository
 
-- **Live Site:** [Insert Live Link Here]
-- **Backend Repository:** [https://github.com/devmishu/eventhub-server]
+- **Live Site:** https://eventhub-rho-three.vercel.app
+- **Backend Repository:** https://github.com/devmishu/eventhub-server 
 
 ---
 
