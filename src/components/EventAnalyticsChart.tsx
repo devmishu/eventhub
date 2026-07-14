@@ -10,23 +10,9 @@ import {
   Tooltip,
   ResponsiveContainer,
 } from "recharts";
-
-interface Event {
-  _id: { $oid: string };
-  userId: string;
-  title: string;
-  shortDescription: string;
-  fullDescription: string;
-  price: number;
-  date: string;
-  priority: string;
-  imageUrl: string;
-  location: string;
-  category: string;
-}
-
+import { EventData } from "@/lib/apis/events";
 interface EventAnalyticsChartProps {
-  events: Event[];
+  events: EventData[];
 }
 
 export default function EventAnalyticsChart({

@@ -144,15 +144,15 @@ export function ManageEventsTable({
                       <div className="flex items-center justify-end gap-2">
                         {/* View Details Button (Theme Primary Color Outline) */}
                         <Link href={`/explore/${item._id}`}>
-                          <button
+                          <Button
                             isIconOnly
                             size="sm"
-                            variant="bordered"
-                            onClick={() => handleView(item._id)}
+                            variant="outline"
+                            onClick={() => handleView(item._id as string)}
                             className="border-zinc-200 hover:border-zinc-300 hover:bg-zinc-50 rounded-xl cursor-pointer"
                           >
                             <Eye className="w-4 h-4 text-zinc-600" />
-                          </button>
+                          </Button>
                         </Link>
 
                         {/* Delete Button */}
@@ -161,7 +161,7 @@ export function ManageEventsTable({
                           <Button
                             isIconOnly
                             size="sm"
-                            variant="flat"
+                            variant="danger-soft"
                             className="bg-red-50 hover:bg-red-100 rounded-xl cursor-pointer transition-colors"
                           >
                             <Trash2 className="w-4 h-4 text-red-500" />
@@ -188,7 +188,7 @@ export function ManageEventsTable({
                                     Cancel
                                   </Button>
                                   <Button
-                                    onClick={() => onHandleDeletEvent(item._id)}
+                                    onClick={() => onHandleDeletEvent(item._id as string)}
                                     slot="close"
                                     variant="danger"
                                   >

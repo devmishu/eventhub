@@ -1,20 +1,6 @@
-import { getSingleEvents } from "@/lib/apis/events";
+import { getSingleEvents, EventData } from "@/lib/apis/events";
 import { ArrowLeft, MapPin, Calendar, Clock, Tag, User } from "lucide-react";
 import Link from "next/link";
-
-export interface SingleEventDetails {
-  _id?: string;
-  title: string;
-  imageUrl: string;
-  date: string;
-  shortfullDescription: string;
-  fullfullDescription: string;
-  priority: string;
-  price: number;
-  category: string;
-  location: string;
-  userId: string;
-}
 
 interface PageProps {
   params: Promise<{
@@ -24,9 +10,9 @@ interface PageProps {
 
 export default async function EventDetails({
   params,
-}: PageProps): React.JSX.Element {
+}: PageProps): Promise<React.JSX.Element> {
   const { id } = await params;
-  const singleEvents: SingleEventDetails = await getSingleEvents(id);
+  const singleEvents: EventData = await getSingleEvents(id);
 
  
 

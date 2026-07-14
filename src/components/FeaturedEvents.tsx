@@ -29,9 +29,10 @@ interface StatItem {
 
 interface EvenntResponse {
   result: Event[];
+  total: number;
 }
 
-export default async function FeaturedEvents(): React.JSX.Element {
+export default async function FeaturedEvents(): Promise<React.JSX.Element> {
   const featuredEvents = await getFeaturedEvents();
 
   const eventsData: EvenntResponse = await getEvents(null);
@@ -96,7 +97,7 @@ export default async function FeaturedEvents(): React.JSX.Element {
               date={event.date}
               location={event.location}
               category={event.category}
-              id={event._id}
+              id={event._id as string}
               shortDescription={event.shortDescription}
               price={event.price}
             />

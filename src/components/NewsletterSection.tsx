@@ -48,6 +48,7 @@ export default function NewsletterSection(): React.JSX.Element {
             onSubmit={handleSubscribe}
             className="w-full lg:w-auto flex flex-col sm:flex-row items-center gap-3 flex-1 lg:max-w-xl lg:justify-end"
           >
+            
             <Input
               type="email"
               placeholder="Enter your email"
@@ -55,20 +56,19 @@ export default function NewsletterSection(): React.JSX.Element {
               onChange={(e: React.ChangeEvent<HTMLInputElement>) =>
                 setEmail(e.target.value)
               }
-              variant="bordered"
-              radius="xl"
-              className="w-full sm:max-w-[320px] bg-white rounded-xl"
-              classNames={{
-                inputWrapper: `border-zinc-200/85 hover:border-zinc-300 focus-within:!border-zinc-400 h-11 bg-white shadow-xs ${isSubscribed ? "bg-zinc-100/80 border-zinc-200 pointer-events-none" : ""}`,
-                input: `${isSubscribed ? "text-emerald-600 font-bold" : "text-zinc-800"} placeholder:text-zinc-400 text-sm`,
-              }}
+              className={`w-full sm:max-w-[320px] bg-white rounded-xl 
+    [&>div]:border-[1px] [&>div]:border-zinc-200/85 [&>div]:hover:border-zinc-300 
+    [&>div]:focus-within:!border-zinc-400 [&>div]:h-11 [&>div]:bg-white [&>div]:shadow-xs 
+    ${isSubscribed ? "[&>div]:bg-zinc-100/80 [&>div]:border-zinc-200 [&>div]:pointer-events-none" : ""} 
+    [&_input]:placeholder:text-zinc-400 [&_input]:text-sm 
+    ${isSubscribed ? "[&_input]:text-emerald-600 [&_input]:font-bold" : "[&_input]:text-zinc-800"}`}
               required
-              disabled={isSubscribed} 
+              disabled={isSubscribed}
             />
 
             <Button
               type="submit"
-              disabled={isSubscribed} 
+              isDisabled={isSubscribed}
               className={`w-full sm:w-auto h-11 px-6 rounded-xl font-semibold text-white shadow-sm transition-all text-sm flex-shrink-0 flex items-center justify-center gap-2 ${
                 isSubscribed
                   ? "bg-zinc-400 border-transparent cursor-not-allowed opacity-70"

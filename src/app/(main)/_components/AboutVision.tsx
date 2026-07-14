@@ -18,7 +18,7 @@ const StatCard = ({ number, label }: StatCardProps) => (
   </div>
 );
 
-export default function AboutVision({ totalEvents }): React.JSX.Element {
+export default function AboutVision({ totalEvents }: { totalEvents: number }): React.JSX.Element {
   return (
     <section className="w-full bg-[#fbfbfe] py-12">
       <div className="w-full max-w-[1440px] mx-auto px-6 md:px-12">

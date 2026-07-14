@@ -53,7 +53,7 @@ const SLIDES: SlideItem[] = [
   },
 ];
 
-export default function HeroSection({ totalEvents }): React.JSX.Element {
+export default function HeroSection({ totalEvents }: { totalEvents: number }): React.JSX.Element {
   const [currentIndex, setCurrentIndex] = useState<number>(0);
   const [direction, setDirection] = useState<number>(0);
 

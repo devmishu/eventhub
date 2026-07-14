@@ -45,7 +45,7 @@ export function EmptyState({
      
 
       <Link href={buttonHref}>
-        <button className="bg-[#5820e4] text-white h-11 px-6 rounded-xl font-semibold shadow-md transition-transform active:scale-95 hover:opacity-90">
+        <button className="cursor-pointer bg-[#5820e4] text-white h-11 px-6 rounded-xl font-semibold shadow-md transition-transform active:scale-95 hover:opacity-90">
           {buttonText}
         </button>
       </Link>

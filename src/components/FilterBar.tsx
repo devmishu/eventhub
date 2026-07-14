@@ -68,15 +68,8 @@ export default function FilterBar({
             value={searchQuery}
             onChange={(e) => setSearchQuery(e.target.value)}
             placeholder="Search events..."
-            variant="bordered"
-            radius="xl"
             className="w-full bg-white rounded-xl"
-            endContent={
-              <Search
-                className="w-4 h-4 flex-shrink-0 cursor-pointer"
-                style={{ color: "var(--primary)" }}
-              />
-            }
+            // @ts-ignore
             classNames={{
               inputWrapper:
                 "border-zinc-200/85 hover:border-zinc-300 focus-within:!border-zinc-400 h-11 bg-white shadow-xs",

@@ -173,7 +173,7 @@ export default function ContactForm(): React.JSX.Element {
                 {/* Submit Button */}
                 <Button
                   type="submit"
-                  disabled={loading || isSent}
+                  isDisabled={loading || isSent}
                   className={`w-full h-11 rounded-xl text-white font-bold text-sm shadow-xs transition-all duration-300 active:scale-98 mt-2 cursor-pointer flex items-center justify-center gap-2 ${
                     isSent ? "bg-emerald-600 opacity-95 cursor-not-allowed" : ""
                   }`}

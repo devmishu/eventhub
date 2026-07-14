@@ -1,5 +1,4 @@
-"use client";
-import { Button } from "@heroui/react";
+
 import { MoveLeft, AlertCircle } from "lucide-react";
 import Link from "next/link";
 
@@ -31,23 +30,23 @@ export default function NotFound() {
         {/* Action Buttons */}
         <div className="flex flex-col sm:flex-row gap-3 justify-center items-center">
           <Link href="/">
-          <Button
+          <button
             
-            className="w-full sm:w-auto bg-[#5820e4] hover:bg-[#4717c1] text-white px-6 h-11 rounded-xl font-medium flex items-center justify-center gap-2 transition-all duration-200"
+            className="cursor-pointer w-full sm:w-auto bg-[#5820e4] hover:bg-[#4717c1] text-white px-6 h-11 rounded-xl font-medium flex items-center justify-center gap-2 transition-all duration-200"
           >
             <MoveLeft className="w-4 h-4" />
             Back to Home
-          </Button>
+          </button>
           </Link>
 
           <Link href={"/explore"}>
-          <Button
+          <button
             
-            variant="bordered"
-            className="w-full sm:w-auto border border-zinc-200 text-zinc-700 hover:bg-zinc-100 px-6 h-11 rounded-xl font-medium transition-all duration-200"
+            
+            className="cursor-pointer w-full sm:w-auto border border-zinc-200 text-zinc-700 hover:bg-zinc-100 px-6 h-11 rounded-xl font-medium transition-all duration-200"
           >
             Explore Events
-          </Button>
+          </button>
           </Link>
         </div>
 

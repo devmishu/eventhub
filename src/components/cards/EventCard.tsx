@@ -105,7 +105,7 @@ export function EventCard({
           {/* View Details Button */}
           <Link href={`/explore/${id}`}>
             <Button
-              variant="solid"
+              variant="primary"
               className="h-9 px-4 rounded-xl text-xs font-bold text-white shadow-sm transition-all duration-200 opacity-90 hover:opacity-100 cursor-pointer"
               style={{
                 backgroundColor: "var(--primary)",
